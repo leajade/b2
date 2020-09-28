@@ -1516,4 +1516,4 @@ Setting netdata.tarball.checksum to 'new_installation'
   […]
   ```
 
-  ![](/Users/leaduvigneau/Documents/ynov/cours/b2/linux/tp1/images/discord_notification.png)
+  ![](./images/discord_notification.png)
