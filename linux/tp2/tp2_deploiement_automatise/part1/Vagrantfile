@@ -1,0 +1,35 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  # https://docs.vagrantup.com.
+  # boxes at https://vagrantcloud.com/search.
+ 
+  config.vm.box = "b2-tp2-centos"
+  
+  config.vbguest.auto_update = false
+  config.vm.box_check_update = false
+  config.vm.synced_folder ".", "/vagrant", disabled: true
+  
+  # Exécution d'un script au démarrage de la VM
+  config.vm.provision "shell", path: "script.sh"
+
+ 
+  config.vm.define "vm1" do |vm1|
+     vm1.vm.provider "virtualbox" do |vb|
+     vb.memory = "1024"
+     vb.name = "patron_centos7_vagrant"
+      # adding a second disk
+     CONTROL_NODE_DISK='./disk2.vdi'
+     unless File.exist?(CONTROL_NODE_DISK)
+      vb.customize ['createhd', '--filename', CONTROL_NODE_DISK, '--variant', 'Fixed', '--size', 5 * 1024]
+     end
+
+    # Attache le disque à la VM
+     vb.customize ['storageattach', :id,  '--storagectl', 'IDE', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', CONTROL_NODE_DISK]
+    end
+    vm1.vm.network "private_network", ip: "192.168.2.11"
+    vm1.vm.hostname = "tp1.vagrant"
+    
+  end 
+end
