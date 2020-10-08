@@ -560,6 +560,10 @@ $ systemd-analyze security <SERVICE>
   systemd_analyse.svg
   ```
 
+  ```
+  Les trois services les plus lents à démarrer sont : vboxadd.service, NetworkManager-wait-online.service, tuned.service 
+  ```
+  
   
 
 ## 2. Gestion de l'heure
