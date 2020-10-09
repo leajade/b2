@@ -560,8 +560,11 @@ $ systemd-analyze security <SERVICE>
   systemd_analyse.svg
   ```
 
-  ```
-  Les trois services les plus lents à démarrer sont : vboxadd.service, NetworkManager-wait-online.service, tuned.service 
+  ```bash
+  [vagrant@centos8 ~]$ systemd-analyze blame | head -n 3
+           58.403s vboxadd.service
+            2.286s NetworkManager-wait-online.service
+            1.935s initrd-switch-root.service
   ```
   
   
