@@ -1,0 +1,56 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  config.vbguest.auto_update = true
+  config.vm.box_check_update = false
+  
+  config.vm.box = "centos/7"
+  config.vm.provision "shell", path: "setup.sh"
+
+  config.vm.define "gitea" do |n1|
+    n1.vm.network "private_network", ip: "192.168.2.24"
+    n1.vm.hostname = "gitea"
+    n1.vm.provision "file", source: "./files/gitea.service", destination: "/tmp/gitea.service"
+    n1.vm.provision "file", source: "./files/backup_gitea.sh", destination: "/tmp/backup_gitea.sh"
+    n1.vm.provision "shell", path: "./scripts/script_gitea.sh"
+    n1.vm.provider "virtualbox" do |vb|
+      vb.memory = "1024"
+      vb.name = "gitea"
+    end
+  end
+
+  config.vm.define "mariadb" do |n2|
+    n2.vm.network "private_network", ip: "192.168.2.25"
+    n2.vm.hostname = "mariadb"
+    n2.vm.provision "file", source: "./files/server.cnf", destination: "/tmp/server.cnf"
+    n2.vm.provision "file", source: "./files/backup_mariadb.sh", destination: "/tmp/backup_mariadb.sh"
+    n2.vm.provision "shell", path: "./scripts/script_mariadb.sh"
+    n2.vm.provider "virtualbox" do |vb|
+      vb.memory = "1024"
+      vb.name = "mariadb"
+    end
+  end
+
+  config.vm.define "nginx" do |n3|
+    n3.vm.network "private_network", ip: "192.168.2.26"
+    n3.vm.hostname = "nginx"
+    n3.vm.provision "file", source: "./files/nginx.conf", destination: "/tmp/nginx.conf"
+    n3.vm.provision "file", source: "./files/backup_nginx.sh", destination: "/tmp/backup_nginx.sh"
+    n3.vm.provision "shell", path: "./scripts/script_nginx.sh"
+    n3.vm.provider "virtualbox" do |vb|
+      vb.memory = "1024"
+      vb.name = "nginx"
+    end
+  end
+
+  config.vm.define "nfs" do |n4|
+    n4.vm.network "private_network", ip: "192.168.2.27"
+    n4.vm.hostname = "nfs"
+    n4.vm.provision "shell", path: "./scripts/script_nfs.sh"
+    n4.vm.provider "virtualbox" do |vb|
+      vb.memory = "1024"
+      vb.name = "nfs"
+    end
+  end
+end
