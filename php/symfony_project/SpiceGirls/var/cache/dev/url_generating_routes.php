@@ -23,5 +23,6 @@ return [
     'post' => [['id'], ['_controller' => 'App\\Controller\\SpiceGirlsController::offer'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/posts']], [], []],
     'add' => [[], ['_controller' => 'App\\Controller\\SpiceGirlsController::add'], [], [['text', '/add']], [], []],
     'updateOffer' => [['id'], ['_controller' => 'App\\Controller\\SpiceGirlsController::edit'], [], [['text', '/update'], ['variable', '/', '[^/]++', 'id', true], ['text', '/posts']], [], []],
+    'deleteOffer' => [['id'], ['_controller' => 'App\\Controller\\SpiceGirlsController::delete'], [], [['text', '/delete'], ['variable', '/', '[^/]++', 'id', true], ['text', '/posts']], [], []],
     'logout' => [[], [], [], [['text', '/logout']], [], []],
 ];

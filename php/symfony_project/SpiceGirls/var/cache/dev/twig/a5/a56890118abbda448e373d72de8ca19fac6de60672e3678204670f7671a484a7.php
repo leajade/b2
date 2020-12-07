@@ -121,9 +121,13 @@ class __TwigTemplate_a7d8d8675735dd1bf5ced515c8ad702f2e00ee40e2360e3721d383c7068
             echo "                                <a href=\"/posts/";
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["offer"]) || array_key_exists("offer", $context) ? $context["offer"] : (function () { throw new RuntimeError('Variable "offer" does not exist.', 22, $this->source); })()), "id", [], "any", false, false, false, 22), "html", null, true);
             echo "/update\" class=\"btn btn-outline-primary mx-auto\">Modifier</a>
+                                <a href=\"/posts/";
+            // line 23
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["offer"]) || array_key_exists("offer", $context) ? $context["offer"] : (function () { throw new RuntimeError('Variable "offer" does not exist.', 23, $this->source); })()), "id", [], "any", false, false, false, 23), "html", null, true);
+            echo "/delete\" class=\"btn btn-outline-danger mx-auto\">Supprimer</a>
                             ";
         }
-        // line 24
+        // line 25
         echo "                        </div>
                     </div>
                 </div>
@@ -151,7 +155,7 @@ class __TwigTemplate_a7d8d8675735dd1bf5ced515c8ad702f2e00ee40e2360e3721d383c7068
 
     public function getDebugInfo()
     {
-        return array (  127 => 24,  121 => 22,  119 => 21,  115 => 20,  108 => 16,  104 => 15,  98 => 14,  94 => 13,  88 => 12,  84 => 11,  80 => 10,  74 => 6,  71 => 5,  68 => 4,  58 => 3,  35 => 1,);
+        return array (  131 => 25,  126 => 23,  121 => 22,  119 => 21,  115 => 20,  108 => 16,  104 => 15,  98 => 14,  94 => 13,  88 => 12,  84 => 11,  80 => 10,  74 => 6,  71 => 5,  68 => 4,  58 => 3,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -178,6 +182,7 @@ class __TwigTemplate_a7d8d8675735dd1bf5ced515c8ad702f2e00ee40e2360e3721d383c7068
                             <a href=\"#/{{offer.id}}\" class=\"btn btn-outline-primary mx-auto\">Postuler</a>
                             {% if is_granted('ROLE_USER') %}
                                 <a href=\"/posts/{{offer.id}}/update\" class=\"btn btn-outline-primary mx-auto\">Modifier</a>
+                                <a href=\"/posts/{{offer.id}}/delete\" class=\"btn btn-outline-danger mx-auto\">Supprimer</a>
                             {% endif %}
                         </div>
                     </div>
@@ -185,6 +190,6 @@ class __TwigTemplate_a7d8d8675735dd1bf5ced515c8ad702f2e00ee40e2360e3721d383c7068
             </div>
         </div>
     </div>
-{% endblock %}", "spice/offer.html.twig", "/Users/leaduvigneau/Documents/ynov/cours/b2/php/symfony_project/SpiceGirls/templates/spice/offer.html.twig");
+{% endblock %}", "spice/offer.html.twig", "/Users/marie/Documents/ynov_2020_2021/php/symfony_project/SpiceGirls/templates/spice/offer.html.twig");
     }
 }

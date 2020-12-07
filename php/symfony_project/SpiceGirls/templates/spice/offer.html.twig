@@ -20,6 +20,7 @@
                             <a href="#/{{offer.id}}" class="btn btn-outline-primary mx-auto">Postuler</a>
                             {% if is_granted('ROLE_USER') %}
                                 <a href="/posts/{{offer.id}}/update" class="btn btn-outline-primary mx-auto">Modifier</a>
+                                <a href="/posts/{{offer.id}}/delete" class="btn btn-outline-danger mx-auto">Supprimer</a>
                             {% endif %}
                         </div>
                     </div>

@@ -42,7 +42,7 @@ class SpiceGirlsController extends AbstractController
      * @Route("/posts/{id}", name="post")
      * @param Offers $offers
      */
-    public function offer(Offers $offer, Request $request, EntityManagerInterface $entityManager)
+    public function offer(Offers $offer)
     {
         return $this->render('spice/offer.html.twig', [
             'offer' => $offer,
@@ -112,5 +112,18 @@ class SpiceGirlsController extends AbstractController
 
         ]);
     }
+
+    /**
+     * @Route("/posts/{id}/delete", name="deleteOffer")
+     * @param Offers $offers
+     */
+    public function delete(Offers $offer ){
+        $del = $this->getDoctrine()->getManager();
+        $del->remove($offer);
+        $del->flush();
+
+        return $this->redirectToRoute('spice');
+    }
 }
+
 
